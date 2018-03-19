@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css"/>
+		<style type="text/css">
+			.carcont{width: 1010px;margin: 10px auto;padding-bottom: 30px;}
+			.carcont .tocont{background:url(img/shoppingcar.png)no-repeat #fe777c;background-position:100% 0; width: 970px;height: 80px;padding: 0px 20px;margin-bottom: 10px;}
+			.carcont .tocont h2{float: left;color: #fff;height: 80px;opacity: 0.8;margin-right: 10px;}
+			.carcont .tocont h2:first-child{opacity: 1;}
+			.carcont .tocont h2 span{display: block;width: 100px;font-size: 14px;margin-top: 10px;}
+			.carcont h4{border-bottom: 2px solid #000;height: 30px;line-height: 30px;color: #870000;}
+			.carcont h4 span{margin-left: 20px;font-size: 14px;color: #666;}
+			.carcont h4 i{float: right;font-style: normal;background: #ff5d5d;color: #fff;width: 90px;height: 26px;line-height: 26px;font-size: 15px;text-align: center;border-radius: 5px;cursor: pointer;}
+			/*.carcont table{display: flex;justify-content: space-between;}*/
+			.carcont table th{width: 250px;color:#666 ;font-size: 15px;background: #f5f5f5;}
+			/*.carcont table td{width: 250px;}*/
+			.carcont table span{color: #CC0000;cursor: pointer;}
+			.carcont table tr th:hover{text-decoration: underline;}
+			.carcont table tr:first-child th{color: #000;font-size: 16px;background: #fff;text-decoration: none;}
+			.carcont table tr img{width: 180px;height: 180px;}
+			.carcont .nogoods{background: #F5F5F5;height: 120px;line-height: 120px;text-align: center;font-size: 20px;border-radius: 40px;color: #c4b7b7;font-weight: bold;}
+			.centercont{background: #F5F5F5;padding: 24px 20px;width: 970px;margin: 0 auto;overflow: hidden;}
+			.centercont img{float: left;}
+			.centercont ul{float: right;background: #fff;width: 450px;height: 180px;padding: 0 10px;}
+			.centercont ul li{line-height: 44px;border-bottom: 1px solid #ccc;}
+			.centercont ul li:last-child{border-bottom: none;}
+			.bottomBut{width: 1010px;border-bottom: 1px solid #ccc;margin: 0 auto;}
+			.bottomBut img{margin: 10px auto;width: 280px;margin-left: 36%;cursor: pointer;}
+			.centercont ul li span{float: right;}	
+			.centercont ul li:last-child span{font-size: 20px;color: #CC0000;font-weight: bold;}
+		</style>
+	</head>
+	<body>
+		<div class="cartop"></div>
+		<div class="carright"></div>
+		<div class="carcont">
+			<div class="tocont">
+				<h2><span>Step1</span>购物车  ></h2>
+				<h2><span>Step2</span>现在订购  ></h2>
+				<h2><span>Step3</span>订购信息  </h2>
+			</div>
+			<h4>交易情况<span>※ 购物车商品将会保存30天</span><i>我的优惠劵</i></h4>
+			<table cellspacing="0" cellpadding="10" >
+				<tr>
+					<th>商品图</th>
+					<th>商品名称</th>
+					<th>商品价格</th>
+					<th>操作</th>
+				</tr>
+			</table>
+		</div>
+			<div class="centercont">
+				<img src="img/app.jpg" alt="" />
+				<ul>
+					<li>商品价格(0)<span>0元</span></li>
+					<li>店铺/购物车优惠券(0) <span>0元</span></li>
+					<li>运送费合计 <span>0元</span></li>
+					<li><span>0元</span></li>
+				</ul>
+			</div>
+			<div class="bottomBut">
+				<img src="img/button.png"/>
+			</div>
+		<div class="carfooter"></div>
+	</body>
+	<script src="libs/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+	<script src="libs/require.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jQuery.banner.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jQuery.banner2.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/tab2.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//红色导航栏
+		require(["js/tab"],function(tab){
+				var abtn = document.getElementById("list99").children;
+//				console.log(document.getElementById("list99"))
+				var aimg = document.getElementsByTagName("nav")[0].children;
+				tab.init(abtn,aimg);
+		});
+		$('.cartop').load('http://localhost/h5-1710/hsyFire/header.html',function(res){
+			$(".cartop").find('#goodscar').find("span").html(goodsnum);
+		})
+		$('.carfooter').load('http://localhost/h5-1710/hsyFire/footer.html')
+		$('.carright').load('http://localhost/h5-1710/hsyFire/rightnav.html',function(res){
+			$(".carright").find('.rightnav').find('.cnav').find("strong").html(goodsnum);
+		})
+		var arrNew=[];
+		var Json=null;
+		var Json2=null;
+		var Json3=null;
+		var Json4=null;
+		var Json5=null;
+		var Json6=null;
+		var Json7=null;
+		var Json8=null;
+		var Json9=null;
+		var Json10=null;
+		$.ajax({
+			url:"http://localhost/h5-1710/hsyFire/json/allgoods.json",
+			async: false,
+			dateType:"json"
+		}).then(function(a){
+			Json=a;
+		})
+		for(let i=0;i<Json.length;i++){
+			arrNew.push(Json[i])
+		}
+		$.ajax({
+			url:"http://localhost/h5-1710/hsyFire/json/newgoods.json",
+			async: false
+		}).then(function(a){
+			Json2=a;
+		})
+		for(let i=0;i<Json2.length;i++){
+			arrNew.push(Json2[i])
+		}
+		$.ajax({
+			url:"http://localhost/h5-1710/hsyFire/json/wtgoods.json",
+			async: false
+		}).then(function(a){
+			Json3=a;
+		})
+		for(let i=0;i<Json3.length;i++){
+			arrNew.push(Json3[i])
+		}
+		$.ajax({
+			url:"http://localhost/h5-1710/hsyFire/json/yrgoods.json",
+			async: false
+		}).then(function(a){
+			Json4=a;
+		})
+		for(let i=0;i<Json4.length;i++){
+			arrNew.push(Json4[i])
+		}
+		$.ajax({
+			url:"http://localhost/h5-1710/hsyFire/json/txgoods.json",
+			async: false
+		}).then(function(a){
+			Json5=a;
+		})
+		for(let i=0;i<Json5.length;i++){
+			arrNew.push(Json5[i])
+		}
+		$.ajax({
+			url:"http://localhost/h5-1710/hsyFire/json/kzgoods.json",
+			async: false
+		}).then(function(a){
+			Json6=a;
+		})
+		for(let i=0;i<Json6.length;i++){
+			arrNew.push(Json6[i])
+		}
+		$.ajax({
+			url:"http://localhost/h5-1710/hsyFire/json/qzgoods.json",
+			async: false
+		}).then(function(a){
+			Json7=a;
+		})
+		for(let i=0;i<Json7.length;i++){
+			arrNew.push(Json7[i])
+		}
+		$.ajax({
+			url:"http://localhost/h5-1710/hsyFire/json/mygoods.json",
+			async: false
+		}).then(function(a){
+			Json8=a;
+		})
+		for(let i=0;i<Json8.length;i++){
+			arrNew.push(Json8[i])
+		}
+		$.ajax({
+			url:"http://localhost/h5-1710/hsyFire/json/xbgoods.json",
+			async: false
+		}).then(function(a){
+			Json9=a;
+		})
+		for(let i=0;i<Json9.length;i++){
+			arrNew.push(Json9[i])
+		}
+		$.ajax({
+			url:"http://localhost/h5-1710/hsyFire/json/csgoods.json",
+			async: false
+		}).then(function(a){
+			Json10=a;
+		})
+		for(let i=0;i<Json10.length;i++){
+			arrNew.push(Json10[i])
+		}
+		
+//		console.log(arrNew);
+			
+		
+		var str=document.cookie;
+		var arr=str.split('; ');
+		var newArr=[];
+		var aTab=document.getElementsByTagName("table")[0];
+		var car=document.getElementsByClassName("carcont")[0];
+		for(var i=0;i<arr.length;i++){
+			newArr.push(arr[i].split('='));
+		}
+		var inner='';
+		for(var i=0;i<newArr.length;i++){
+			for(var j=0;j<arrNew.length;j++){
+				if(newArr[i][1]==arrNew[j].goodsId){
+//					console.log(1)
+					inner="<th><img src='"+arrNew[j].imgsrc+"'/></th><th>"+arrNew[j].name+"</th><th>"+arrNew[j].pri+"</th><th><span data-id='"+arrNew[j].goodsId+"'>删除</span></th>";
+					var oTr=document.createElement('tr');
+					oTr.innerHTML=inner;
+					aTab.appendChild(oTr);
+					
+				}
+			}
+		}
+		
+		var aTr=$('tr');
+		var goodsnum=aTr.length-1;
+		
+//		console.log(goodsnum);
+		if(aTr.length==1){
+			var cont=document.createElement('div');
+			cont.className="nogoods";
+			cont.innerHTML="您的购物车里面没有商品"
+			car.appendChild(cont);
+		}
+		
+		console.log($(".cartop").find('#goodscar'))
+//		$(".cartop").find('#goodscar').mouseenter(function(){
+//		})
+		aTab.onclick=function(eve){
+			var e=eve||window.event;
+			var target=e.target||e.srcElement;
+						if(target.nodeName=='SPAN'){
+							target.parentElement.parentElement.remove();
+//							console.log(target.getAttribute('data-id'))
+
+							removeCookie(target.getAttribute('data-id'));
+							goodsnum--;
+							$(".cartop").find('#goodscar').find("span").html(goodsnum);
+							$(".carright").find('.rightnav').find('.cnav').find("strong").html(goodsnum);
+							
+							if(aTr.length==1){
+								var cont=document.createElement('div');
+								cont.className="nogoods";
+								cont.innerHTML="您的购物车里面没有商品"
+								car.appendChild(cont);
+							}
+						}
+						
+					}
+//		 console.log($(".cartop").find('#goodscar').find("span"))
+		 function getCookie(name){
+			var str=document.cookie;
+			var arr=str.split('; ');
+			var newArr=[];
+			for(var i=0;i<arr.length;i++){
+				newArr.push(arr[i].split('='));
+			}
+			for(var i=0;i<newArr.length;i++){
+				if(name==newArr[i][0]){
+					return newArr[i][1];
+				}
+			}
+		}
+		function removeCookie(name){
+			setCookie(name,1,-1);
+		}	
+		function setCookie(name,value,t){
+			var d = new Date();
+			d.setDate(d.getDate()+t);
+			document.cookie = name+"="+value+";expires=" + d;
+		}
+	</script>
+</html>

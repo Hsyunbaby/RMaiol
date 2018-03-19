@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css"/>
+		<style type="text/css">
+			.mancont{width: 1010px;margin: 10px auto;}
+			.mancont h2{background: #F7F7F7;height: 80px;color: #cd0000;border-bottom: 1px solid #cd0000;line-height: 80px;padding-left:20px ;margin-bottom: 10px;}
+			.mancont h2 span{float: right;width: 120px;height: 24px;line-height: 24px;background: #fe6474;color: #fff;border: 2px solid #ea2934;font-size: 16px;text-align: center;}
+			.mancont .manlist{border: 1px solid #ccc;padding:0 10px;}
+			.mancont .manlist{width: 990px;margin: 0 auto;overflow: hidden;position: relative;}
+			.mancont .goods{overflow: hidden; padding: 5px;width: 176px;float: left;border:  solid 1px #aaa;border-radius: 4px;box-shadow: 0px 0px 5px #aaa;margin: 5px;margin-bottom: 5px;}
+			.mancont .goods .head{line-height: 30px;}
+			.mancont .goods .head span{float: left;font-size: 14px;color: #CC0000;border: 1px solid #CC0000;margin-bottom: 10px;border-radius: 5px;font-weight: bold;cursor: pointer;}
+			.mancont .goods .head strong{float: right;font-size: 16px;font-weight: normal;}
+			.mancont .goods .head strong img{margin-top: 5px;}
+			.mancont .goods p{text-align: center;font-size: 14px;line-height: 26px;cursor: pointer;}
+			.mancont .goods p:hover{text-decoration: underline;}
+			.mancont .goods del{display: block;text-align: center;line-height: 30px;}
+			.mancont .goods p:last-child{ color: #CC0000;font-size: 18px;font-weight: bold;}
+			.mancont .goods>img{width: 160px;}
+			
+			
+		</style>
+	</head>
+	<body>
+		<div class="mantop"></div>
+		<div class="manright"></div>
+		<div class="mancont">
+			<h2>精品男装<span>今日特价></span></h2>
+			<div class="manlist">
+				
+			</div>
+		</div>
+		<div class="manfooter"></div>
+		
+		
+		
+	</body>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+	<script src="libs/require.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jQuery.banner.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jQuery.banner2.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/tab2.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/flyimg.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/cookie.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/goods.js" type="text/javascript" charset="utf-8"></script>
+	<!--<script src="libs/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>-->
+	<script type="text/javascript">
+		require(["js/tab"],function(tab){
+			var abtn = document.getElementById("list99").children;
+			var aimg = document.getElementsByTagName("nav")[0].children;
+			tab.init(abtn,aimg);
+		});
+		$('.mantop').load('http://localhost/h5-1710/hsyFire/header.html')
+		$('.manfooter').load('http://localhost/h5-1710/hsyFire/footer.html')
+		$('.manright').load('http://localhost/h5-1710/hsyFire/rightnav.html')
+		var jSon=[
+{
+		"goodsId":"0001",
+		"carsrc":"img/whitecar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/705/916/882916705.g_180-w-st_g.jpg.webp",
+		"carpri":"10元",
+		"name":"【韩国直邮】 ★LACOSTE★长袖圆领T恤男|纯色简约|时尚运动||6色可选|棒球服 纯棉100%正品",
+		"del":"478元",
+		"pri":"239元"
+	},
+	{
+		"goodsId":"0002",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/147/702/882702147.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"【韩国直邮】 ★Polo Ralph Lauren★ 拉链休闲帽T 卫衣外套 保罗休闲基本款 POLO衫 棒球服 |5色可选|纯棉100%正品",
+		"del":"396元",
+		"pri":"293元"
+	},
+	{
+		"goodsId":"0003",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/830/981/778981830.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"奥林匹亚 时尚炫彩双肩包 清晰纯色双根电脑背包 旅行包男女学生包",
+		"del":"304.30元",
+		"pri":"249.90元"
+	},
+	{
+		"goodsId":"0004",
+		"carsrc":"img/whitecar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/803/225/871225803.g_180-w-st_g.jpg.webp",
+		"carpri":"10元",
+		"name":"【HENNIN】男女连帽登山羽绒服 鸭绒服 冬季新款 轻盈|温暖|简约|大方|基本款|内穿|外搭 象牙色|浅米色|粉色|黑色|4色可选|bactory|100%专柜正品 HEJD74TU02",
+		"del":"269.30元",
+		"pri":"198元"
+	},
+	{
+		"goodsId":"0005",
+		"carsrc":"img/whitecar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/587/659/880659587.g_180-w-st_g.jpg.webp",
+		"carpri":"10元",
+		"name":"【韩国直邮】 ★LACOSTE★短袖圆领T恤男|短袖POLO衫|纯色简约|时尚运动||6色可选|休闲服 纯棉100%正品",
+		"del":"304.30元",
+		"pri":"249.90元"
+	},
+	{
+		"goodsId":"0006",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/160/217/866217160.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"【HENNIN】男士超轻量羽绒服商务|休闲|百搭 鸭绒服 冬季新款 轻盈|温暖|简约|大方|基本款|内穿|外搭|米色|绿色|炭灰|黑色|4色可选|bactory|100%专柜正品 HEJD749M01",
+		"del":"918元",
+		"pri":"459.90元"
+	},
+	{
+		"goodsId":"0007",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/616/225/866225616.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"【HENNIN】男士超轻量羽绒马甲 鸭绒服 冬季新款 轻盈|温暖|简约|大方|基本款|内穿|外搭|浅绿色|驼色|炭灰色|藏青|黑色|5色可选|bactory|100%专柜正品 HEVD749M01",
+		"del":"304.30元",
+		"pri":"249.90元"
+	},
+	{
+		"goodsId":"0008",
+		"carsrc":"img/whitecar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/936/434/768434936.g_180-w-st_g.jpg.webp",
+		"carpri":"10元",
+		"name":" 奥林匹亚 旅行箱万向轮防水牛津布商务行李登机箱 ABS加固",
+		"del":"269.30元",
+		"pri":"198元"
+	},
+	{
+		"goodsId":"0009",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/701/926/1002926701.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":" OLYMPIA/奥林匹亚品牌旅行箱商务出行拉杆箱时尚潮流行李箱学生登机密码箱",
+		"del":"918元",
+		"pri":"459.90元"
+	},
+	{
+		"goodsId":"0010",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/221/690/778690221.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"奥林匹亚 拉杆箱定向轮 男女商务旅行箱 登机行李箱 17寸",
+		"del":"396元",
+		"pri":"293元"
+	},
+	{
+		"goodsId":"0001",
+		"carsrc":"img/whitecar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/705/916/882916705.g_180-w-st_g.jpg.webp",
+		"carpri":"10元",
+		"name":"【韩国直邮】 ★LACOSTE★长袖圆领T恤男|纯色简约|时尚运动||6色可选|棒球服 纯棉100%正品",
+		"del":"478元",
+		"pri":"239元"
+	},
+	{
+		"goodsId":"0002",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/147/702/882702147.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"【韩国直邮】 ★Polo Ralph Lauren★ 拉链休闲帽T 卫衣外套 保罗休闲基本款 POLO衫 棒球服 |5色可选|纯棉100%正品",
+		"del":"396元",
+		"pri":"293元"
+	},
+	{
+		"goodsId":"0003",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/830/981/778981830.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"奥林匹亚 时尚炫彩双肩包 清晰纯色双根电脑背包 旅行包男女学生包",
+		"del":"304.30元",
+		"pri":"249.90元"
+	},
+	{
+		"goodsId":"0004",
+		"carsrc":"img/whitecar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/803/225/871225803.g_180-w-st_g.jpg.webp",
+		"carpri":"10元",
+		"name":"【HENNIN】男女连帽登山羽绒服 鸭绒服 冬季新款 轻盈|温暖|简约|大方|基本款|内穿|外搭 象牙色|浅米色|粉色|黑色|4色可选|bactory|100%专柜正品 HEJD74TU02",
+		"del":"269.30元",
+		"pri":"198元"
+	},
+	{
+		"goodsId":"0005",
+		"carsrc":"img/whitecar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/587/659/880659587.g_180-w-st_g.jpg.webp",
+		"carpri":"10元",
+		"name":"【韩国直邮】 ★LACOSTE★短袖圆领T恤男|短袖POLO衫|纯色简约|时尚运动||6色可选|休闲服 纯棉100%正品",
+		"del":"304.30元",
+		"pri":"249.90元"
+	},
+	{
+		"goodsId":"0006",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/160/217/866217160.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"【HENNIN】男士超轻量羽绒服商务|休闲|百搭 鸭绒服 冬季新款 轻盈|温暖|简约|大方|基本款|内穿|外搭|米色|绿色|炭灰|黑色|4色可选|bactory|100%专柜正品 HEJD749M01",
+		"del":"918元",
+		"pri":"459.90元"
+	},
+	{
+		"goodsId":"0007",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/616/225/866225616.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"【HENNIN】男士超轻量羽绒马甲 鸭绒服 冬季新款 轻盈|温暖|简约|大方|基本款|内穿|外搭|浅绿色|驼色|炭灰色|藏青|黑色|5色可选|bactory|100%专柜正品 HEVD749M01",
+		"del":"304.30元",
+		"pri":"249.90元"
+	},
+	{
+		"goodsId":"0008",
+		"carsrc":"img/whitecar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/936/434/768434936.g_180-w-st_g.jpg.webp",
+		"carpri":"10元",
+		"name":" 奥林匹亚 旅行箱万向轮防水牛津布商务行李登机箱 ABS加固",
+		"del":"269.30元",
+		"pri":"198元"
+	},
+	{
+		"goodsId":"0009",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/701/926/1002926701.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":" OLYMPIA/奥林匹亚品牌旅行箱商务出行拉杆箱时尚潮流行李箱学生登机密码箱",
+		"del":"918元",
+		"pri":"459.90元"
+	},
+	{
+		"goodsId":"0010",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/221/690/778690221.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"奥林匹亚 拉杆箱定向轮 男女商务旅行箱 登机行李箱 17寸",
+		"del":"396元",
+		"pri":"293元"
+	},
+	{
+		"goodsId":"0001",
+		"carsrc":"img/whitecar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/705/916/882916705.g_180-w-st_g.jpg.webp",
+		"carpri":"10元",
+		"name":"【韩国直邮】 ★LACOSTE★长袖圆领T恤男|纯色简约|时尚运动||6色可选|棒球服 纯棉100%正品",
+		"del":"478元",
+		"pri":"239元"
+	},
+	{
+		"goodsId":"0002",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/147/702/882702147.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"【韩国直邮】 ★Polo Ralph Lauren★ 拉链休闲帽T 卫衣外套 保罗休闲基本款 POLO衫 棒球服 |5色可选|纯棉100%正品",
+		"del":"396元",
+		"pri":"293元"
+	},
+	{
+		"goodsId":"0003",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/830/981/778981830.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"奥林匹亚 时尚炫彩双肩包 清晰纯色双根电脑背包 旅行包男女学生包",
+		"del":"304.30元",
+		"pri":"249.90元"
+	},
+	{
+		"goodsId":"0004",
+		"carsrc":"img/whitecar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/803/225/871225803.g_180-w-st_g.jpg.webp",
+		"carpri":"10元",
+		"name":"【HENNIN】男女连帽登山羽绒服 鸭绒服 冬季新款 轻盈|温暖|简约|大方|基本款|内穿|外搭 象牙色|浅米色|粉色|黑色|4色可选|bactory|100%专柜正品 HEJD74TU02",
+		"del":"269.30元",
+		"pri":"198元"
+	},
+	{
+		"goodsId":"0005",
+		"carsrc":"img/whitecar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/587/659/880659587.g_180-w-st_g.jpg.webp",
+		"carpri":"10元",
+		"name":"【韩国直邮】 ★LACOSTE★短袖圆领T恤男|短袖POLO衫|纯色简约|时尚运动||6色可选|休闲服 纯棉100%正品",
+		"del":"304.30元",
+		"pri":"249.90元"
+	},
+	{
+		"goodsId":"0006",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/160/217/866217160.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"【HENNIN】男士超轻量羽绒服商务|休闲|百搭 鸭绒服 冬季新款 轻盈|温暖|简约|大方|基本款|内穿|外搭|米色|绿色|炭灰|黑色|4色可选|bactory|100%专柜正品 HEJD749M01",
+		"del":"918元",
+		"pri":"459.90元"
+	},
+	{
+		"goodsId":"0007",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/616/225/866225616.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"【HENNIN】男士超轻量羽绒马甲 鸭绒服 冬季新款 轻盈|温暖|简约|大方|基本款|内穿|外搭|浅绿色|驼色|炭灰色|藏青|黑色|5色可选|bactory|100%专柜正品 HEVD749M01",
+		"del":"304.30元",
+		"pri":"249.90元"
+	},
+	{
+		"goodsId":"0008",
+		"carsrc":"img/whitecar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/936/434/768434936.g_180-w-st_g.jpg.webp",
+		"carpri":"10元",
+		"name":" 奥林匹亚 旅行箱万向轮防水牛津布商务行李登机箱 ABS加固",
+		"del":"269.30元",
+		"pri":"198元"
+	},
+	{
+		"goodsId":"0009",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/701/926/1002926701.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":" OLYMPIA/奥林匹亚品牌旅行箱商务出行拉杆箱时尚潮流行李箱学生登机密码箱",
+		"del":"918元",
+		"pri":"459.90元"
+	},
+	{
+		"goodsId":"0010",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/221/690/778690221.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"奥林匹亚 拉杆箱定向轮 男女商务旅行箱 登机行李箱 17寸",
+		"del":"396元",
+		"pri":"293元"
+	},
+	{
+		"goodsId":"0001",
+		"carsrc":"img/whitecar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/705/916/882916705.g_180-w-st_g.jpg.webp",
+		"carpri":"10元",
+		"name":"【韩国直邮】 ★LACOSTE★长袖圆领T恤男|纯色简约|时尚运动||6色可选|棒球服 纯棉100%正品",
+		"del":"478元",
+		"pri":"239元"
+	},
+	{
+		"goodsId":"0002",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/147/702/882702147.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"【韩国直邮】 ★Polo Ralph Lauren★ 拉链休闲帽T 卫衣外套 保罗休闲基本款 POLO衫 棒球服 |5色可选|纯棉100%正品",
+		"del":"396元",
+		"pri":"293元"
+	},
+	{
+		"goodsId":"0003",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/830/981/778981830.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"奥林匹亚 时尚炫彩双肩包 清晰纯色双根电脑背包 旅行包男女学生包",
+		"del":"304.30元",
+		"pri":"249.90元"
+	},
+	{
+		"goodsId":"0004",
+		"carsrc":"img/whitecar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/803/225/871225803.g_180-w-st_g.jpg.webp",
+		"carpri":"10元",
+		"name":"【HENNIN】男女连帽登山羽绒服 鸭绒服 冬季新款 轻盈|温暖|简约|大方|基本款|内穿|外搭 象牙色|浅米色|粉色|黑色|4色可选|bactory|100%专柜正品 HEJD74TU02",
+		"del":"269.30元",
+		"pri":"198元"
+	},
+	{
+		"goodsId":"0005",
+		"carsrc":"img/whitecar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/587/659/880659587.g_180-w-st_g.jpg.webp",
+		"carpri":"10元",
+		"name":"【韩国直邮】 ★LACOSTE★短袖圆领T恤男|短袖POLO衫|纯色简约|时尚运动||6色可选|休闲服 纯棉100%正品",
+		"del":"304.30元",
+		"pri":"249.90元"
+	},
+	{
+		"goodsId":"0006",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/160/217/866217160.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"【HENNIN】男士超轻量羽绒服商务|休闲|百搭 鸭绒服 冬季新款 轻盈|温暖|简约|大方|基本款|内穿|外搭|米色|绿色|炭灰|黑色|4色可选|bactory|100%专柜正品 HEJD749M01",
+		"del":"918元",
+		"pri":"459.90元"
+	},
+	{
+		"goodsId":"0007",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/616/225/866225616.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"【HENNIN】男士超轻量羽绒马甲 鸭绒服 冬季新款 轻盈|温暖|简约|大方|基本款|内穿|外搭|浅绿色|驼色|炭灰色|藏青|黑色|5色可选|bactory|100%专柜正品 HEVD749M01",
+		"del":"304.30元",
+		"pri":"249.90元"
+	},
+	{
+		"goodsId":"0008",
+		"carsrc":"img/whitecar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/936/434/768434936.g_180-w-st_g.jpg.webp",
+		"carpri":"10元",
+		"name":" 奥林匹亚 旅行箱万向轮防水牛津布商务行李登机箱 ABS加固",
+		"del":"269.30元",
+		"pri":"198元"
+	},
+	{
+		"goodsId":"0009",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/701/926/1002926701.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":" OLYMPIA/奥林匹亚品牌旅行箱商务出行拉杆箱时尚潮流行李箱学生登机密码箱",
+		"del":"918元",
+		"pri":"459.90元"
+	},
+	{
+		"goodsId":"0010",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/221/690/778690221.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"奥林匹亚 拉杆箱定向轮 男女商务旅行箱 登机行李箱 17寸",
+		"del":"396元",
+		"pri":"293元"
+	},
+	{
+		"goodsId":"0001",
+		"carsrc":"img/whitecar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/705/916/882916705.g_180-w-st_g.jpg.webp",
+		"carpri":"10元",
+		"name":"【韩国直邮】 ★LACOSTE★长袖圆领T恤男|纯色简约|时尚运动||6色可选|棒球服 纯棉100%正品",
+		"del":"478元",
+		"pri":"239元"
+	},
+	{
+		"goodsId":"0002",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/147/702/882702147.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"【韩国直邮】 ★Polo Ralph Lauren★ 拉链休闲帽T 卫衣外套 保罗休闲基本款 POLO衫 棒球服 |5色可选|纯棉100%正品",
+		"del":"396元",
+		"pri":"293元"
+	},
+	{
+		"goodsId":"0003",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/830/981/778981830.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"奥林匹亚 时尚炫彩双肩包 清晰纯色双根电脑背包 旅行包男女学生包",
+		"del":"304.30元",
+		"pri":"249.90元"
+	},
+	{
+		"goodsId":"0004",
+		"carsrc":"img/whitecar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/803/225/871225803.g_180-w-st_g.jpg.webp",
+		"carpri":"10元",
+		"name":"【HENNIN】男女连帽登山羽绒服 鸭绒服 冬季新款 轻盈|温暖|简约|大方|基本款|内穿|外搭 象牙色|浅米色|粉色|黑色|4色可选|bactory|100%专柜正品 HEJD74TU02",
+		"del":"269.30元",
+		"pri":"198元"
+	},
+	{
+		"goodsId":"0005",
+		"carsrc":"img/whitecar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/587/659/880659587.g_180-w-st_g.jpg.webp",
+		"carpri":"10元",
+		"name":"【韩国直邮】 ★LACOSTE★短袖圆领T恤男|短袖POLO衫|纯色简约|时尚运动||6色可选|休闲服 纯棉100%正品",
+		"del":"304.30元",
+		"pri":"249.90元"
+	},
+	{
+		"goodsId":"0006",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/160/217/866217160.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"【HENNIN】男士超轻量羽绒服商务|休闲|百搭 鸭绒服 冬季新款 轻盈|温暖|简约|大方|基本款|内穿|外搭|米色|绿色|炭灰|黑色|4色可选|bactory|100%专柜正品 HEJD749M01",
+		"del":"918元",
+		"pri":"459.90元"
+	},
+	{
+		"goodsId":"0007",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/616/225/866225616.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"【HENNIN】男士超轻量羽绒马甲 鸭绒服 冬季新款 轻盈|温暖|简约|大方|基本款|内穿|外搭|浅绿色|驼色|炭灰色|藏青|黑色|5色可选|bactory|100%专柜正品 HEVD749M01",
+		"del":"304.30元",
+		"pri":"249.90元"
+	},
+	{
+		"goodsId":"0008",
+		"carsrc":"img/whitecar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/936/434/768434936.g_180-w-st_g.jpg.webp",
+		"carpri":"10元",
+		"name":" 奥林匹亚 旅行箱万向轮防水牛津布商务行李登机箱 ABS加固",
+		"del":"269.30元",
+		"pri":"198元"
+	},
+	{
+		"goodsId":"0009",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/701/926/1002926701.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":" OLYMPIA/奥林匹亚品牌旅行箱商务出行拉杆箱时尚潮流行李箱学生登机密码箱",
+		"del":"918元",
+		"pri":"459.90元"
+	},
+	{
+		"goodsId":"0010",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/221/690/778690221.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"奥林匹亚 拉杆箱定向轮 男女商务旅行箱 登机行李箱 17寸",
+		"del":"396元",
+		"pri":"293元"
+	},
+	{
+		"goodsId":"0001",
+		"carsrc":"img/whitecar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/705/916/882916705.g_180-w-st_g.jpg.webp",
+		"carpri":"10元",
+		"name":"【韩国直邮】 ★LACOSTE★长袖圆领T恤男|纯色简约|时尚运动||6色可选|棒球服 纯棉100%正品",
+		"del":"478元",
+		"pri":"239元"
+	},
+	{
+		"goodsId":"0002",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/147/702/882702147.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"【韩国直邮】 ★Polo Ralph Lauren★ 拉链休闲帽T 卫衣外套 保罗休闲基本款 POLO衫 棒球服 |5色可选|纯棉100%正品",
+		"del":"396元",
+		"pri":"293元"
+	},
+	{
+		"goodsId":"0003",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/830/981/778981830.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"奥林匹亚 时尚炫彩双肩包 清晰纯色双根电脑背包 旅行包男女学生包",
+		"del":"304.30元",
+		"pri":"249.90元"
+	},
+	{
+		"goodsId":"0004",
+		"carsrc":"img/whitecar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/803/225/871225803.g_180-w-st_g.jpg.webp",
+		"carpri":"10元",
+		"name":"【HENNIN】男女连帽登山羽绒服 鸭绒服 冬季新款 轻盈|温暖|简约|大方|基本款|内穿|外搭 象牙色|浅米色|粉色|黑色|4色可选|bactory|100%专柜正品 HEJD74TU02",
+		"del":"269.30元",
+		"pri":"198元"
+	},
+	{
+		"goodsId":"0005",
+		"carsrc":"img/whitecar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/587/659/880659587.g_180-w-st_g.jpg.webp",
+		"carpri":"10元",
+		"name":"【韩国直邮】 ★LACOSTE★短袖圆领T恤男|短袖POLO衫|纯色简约|时尚运动||6色可选|休闲服 纯棉100%正品",
+		"del":"304.30元",
+		"pri":"249.90元"
+	},
+	{
+		"goodsId":"0006",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/160/217/866217160.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"【HENNIN】男士超轻量羽绒服商务|休闲|百搭 鸭绒服 冬季新款 轻盈|温暖|简约|大方|基本款|内穿|外搭|米色|绿色|炭灰|黑色|4色可选|bactory|100%专柜正品 HEJD749M01",
+		"del":"918元",
+		"pri":"459.90元"
+	},
+	{
+		"goodsId":"0007",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/616/225/866225616.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"【HENNIN】男士超轻量羽绒马甲 鸭绒服 冬季新款 轻盈|温暖|简约|大方|基本款|内穿|外搭|浅绿色|驼色|炭灰色|藏青|黑色|5色可选|bactory|100%专柜正品 HEVD749M01",
+		"del":"304.30元",
+		"pri":"249.90元"
+	},
+	{
+		"goodsId":"0008",
+		"carsrc":"img/whitecar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/936/434/768434936.g_180-w-st_g.jpg.webp",
+		"carpri":"10元",
+		"name":" 奥林匹亚 旅行箱万向轮防水牛津布商务行李登机箱 ABS加固",
+		"del":"269.30元",
+		"pri":"198元"
+	},
+	{
+		"goodsId":"0009",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/701/926/1002926701.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":" OLYMPIA/奥林匹亚品牌旅行箱商务出行拉杆箱时尚潮流行李箱学生登机密码箱",
+		"del":"918元",
+		"pri":"459.90元"
+	},
+	{
+		"goodsId":"0010",
+		"carsrc":"img/redcar.png",
+		"imgsrc":"https://gd.image-qoo10.cn/li/221/690/778690221.g_180-w-st_g.jpg.webp",
+		"carpri":"包邮",
+		"name":"奥林匹亚 拉杆箱定向轮 男女商务旅行箱 登机行李箱 17寸",
+		"del":"396元",
+		"pri":"293元"
+	}
+]
+		var str = "";
+		window.onload=onresize=function(){
+			for(let i=0;i<jSon.length-50;i++){
+				str += `<div class="goods">
+				<div class="head"><span data-id="${jSon[i].goodsId}"> + 加入购物车</span><strong><img src="${jSon[i].carsrc}"/>${jSon[i].carpri}</strong></div>
+					<img src="${jSon[i].imgsrc}">
+					<p>${jSon[i].name}</p>
+					<del>${jSon[i].del}</del>
+					<p>${jSon[i].pri}</p>
+			</div>`
+			}
+			$(".manlist").html(str);
+			loadImg();
+		}
+		var load=0;
+		$(window).on("scroll",function(){
+				if(isLoad()&&load<4){
+					console.log(1);
+					for(let i=10;i<jSon.length;i++){
+						str += `<div class="goods">
+									<div class="head"><span data-id="${jSon[i].goodsId}"> + 加入购物车</span><strong><img src="${jSon[i].carsrc}"/>${jSon[i].carpri}</strong></div>
+										<img src="${jSon[i].imgsrc}">
+										<p>${jSon[i].name}</p>
+										<del>${jSon[i].del}</del>
+										<p>${jSon[i].pri}</p>
+								</div>`
+					}
+					$(".manlist").html(str);
+					loadImg();
+					load++;
+				}
+				
+			}) 
+	 	var oCont=document.getElementsByClassName("manlist")[0];
+	 	var aBox=oCont.getElementsByClassName('goods');
+		function isLoad(){
+//			var clientH=document.documentElement.clientHeight||document.body.clientHeight;
+			var scrollT=document.documentElement.scrollTop||document.body.scrollTop;
+//			console.log(aBox)
+			var lastImg=aBox[aBox.length-1].offsetTop;
+//			console.log(lastImg);
+			if((oCont.offsetWidth+scrollT)>lastImg){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		function loadImg(){
+//			if(aBox.length >= 90){
+//				$(window).off("scroll");
+//			}
+//			console.log(aBox.length)
+			var maxNum=Math.floor(oCont.offsetWidth/aBox[0].offsetWidth);
+			
+			var arrHeight=[];
+			for(var i=0;i<aBox.length;i++){
+				if(i<maxNum){
+					arrHeight.push(aBox[i].offsetHeight);
+					//解决页面拉回错乱
+					aBox[i].style.position='';
+				}else{
+					var minHeight=Math.min(...arrHeight);
+					var minIndex=arrHeight.indexOf(minHeight);
+					aBox[i].style.position='absolute';
+					aBox[i].style.top=minHeight+10+'px';
+					aBox[i].style.left=minIndex*(aBox[i].offsetWidth+12)+'px';
+					arrHeight[minIndex]+=aBox[i].offsetHeight+10;
+					oCont.style.height=Math.max(...arrHeight)+30+'px'
+//					console.log(arrHeight)
+		          
+				}
+			}
+
+		}
+	</script>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css"/>
+	</head>
+	<style type="text/css">
+		.loginbox{width: 950px;margin: 20px auto;font-weight: bold;padding:10px 20px 20px 20px;border-bottom: 1px solid #ccc;overflow: hidden;}
+		.loginbox .box{padding: 10px; width:400px;height: 500px;background: #f2545b; box-shadow: 2px 2px 2px #cc474d;}
+		.loginbox .lbox{border-right: 1px dashed #ccc;width: 480px;float: left;}
+		.loginbox .box p{line-height: 24px;color: #000;font-size: 16px;margin: 20px 0;}
+		.loginbox .box p input{width: 240px;outline: none;}
+		.loginbox .box p:first-child{margin-top: 200px;}
+		.loginbox h2{color: #000;text-align: center;margin: 10px 0;}
+		.loginbox span{width: 140px;float: left;}
+		.loginbox .msg{text-align: center; color: #fff;background: #000;opacity: 0.5;font-weight: bold;display: block;height: 40px;display: none;clear: both;line-height: 40px;}
+		.loginbox #user{height: 30px;}
+		.loginbox #pass{height: 30px;}
+		.loginbox .lbox a{height: 40px;width: 80px;background: #CCFFCC;display: block;line-height: 40px;margin: 50px 22px;text-align: center;border-radius: 5px;cursor: pointer;text-decoration: none;color: #000;float: left;}
+		.rad{margin-left: 50px;font: 36px;color: #000;margin-top: 20px;}
+		.loginbox .rbox{float: left;width: 300px;height: 400px;padding:0 50px;}
+		.loginbox .rbox img{cursor: pointer;}
+		.loginbox .rbox>ul{margin-top:180px ;}
+		.loginbox .rbox>ul li{float: left;}
+		#phone{width: 150px;}
+		.loginbox .rbox>ul li a{font-size: 14px;padding: 5px;color: #000;font-weight: normal;}
+		.loginbox .rbox>ul li a:hover{text-decoration: underline;}
+		.loginbox .rbox .way{clear: both;padding: 15px 0;}
+		.loginbox .rbox .way em{color: #2c9a05;font-size: 20px;}
+		.loginbox .rbox .way li:first-child em{color: #CC0000;font-size: 24px;}
+		.loginbox .rbox .way li:hover em{color: #CC0000;font-size: 24px;}
+		.loginbox .rbox .way ul{float: left;}
+		.loginbox .rbox .way p{width: 120px;float: left;font-size: 16px;}
+		.loginbox .rbox .way li{width: 40px;float: left;}
+		.loginfoot{clear: both;}
+		button{margin:0 10px;}
+	</style>
+	<body>
+		<div class="logintop"></div>
+		<div class="loginbox">
+			<div class="lbox">
+				<div class="box">
+					<h2>welcome</h2>
+					<p><span>用户名：</span><input type="text" name="user" id="user" value="" /></p>
+					<p><span>密码：</span><input type="password" name="user" id="pass" value="" /></p>
+					<p><span>手机号登录：</span><input type="text" name="tel" id="phone" value="" /><button >发送短信</button></p>
+					<p><span>请输入短信验证码:</span><input type="text" name="dx" id="dx" placeholder=""/></p>
+					<div class="rad"><input type="radio" id="rad" />3天免登陆</div>
+					<a id="btn" >立即登录</a><a href="register.html">立即注册</a><a href="index.html">返回首页</a>
+					<div class="msg"></div>
+				</div>
+			</div>
+			<div class="rbox">
+				<img src="https://dp.image-qoo10.cn/CN/GMKT.IMG/mall/2015/04/13/70910083-5be1-4234-b303-1c0862223397.jpg" alt="" />
+				<ul>
+					<li><a href="">忘记用户名</a>|</li>
+					<li><a href="">忘记密码？</a></li>
+				</ul>
+				<div class="way">
+					<p>其他登录方式：</p>
+					<ul>
+						<li><a href="" ><em class="iconfont">&#xe624;</em></a></li>
+						<li><a href=""><em class="iconfont">&#xe73c;</em></a></li>
+						<li><a href=""><em class="iconfont">&#xe73b;</em></a></li>
+						<li><a href=""><em class="iconfont">&#xe626;</em></a></li>
+					</ul>
+				</div>
+				
+			</div>
+		</div>
+		<div class="loginright"></div>
+		<div class="loginfoot"></div>
+	</body>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.3/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+	<script src="libs/require.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jQuery.banner.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jQuery.banner2.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/tab2.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/cookie.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+//		require(["js/tab"],function(tab){
+//			var abtn = document.getElementById("list").children;
+//			var aimg = document.getElementsByTagName("nav")[0].children;
+//			tab.init(abtn,aimg);
+//		});
+		
+		$('.logintop').load('http://localhost/h5-1710/hsyFire/header.html',function(){
+			
+		})
+		$('.loginfoot').load('http://localhost/h5-1710/hsyFire/footer.html')
+		$('.loginright').load('http://localhost/h5-1710/hsyFire/rightnav.html')
+		
+	    if(document.cookie!=''){
+//	    	console.log(1)	
+	    	var oUser=getCookie("user");
+	    	var oPass=getCookie('pass');
+//	    	console.log(getCookie('pass'))
+	    	$('#user').val(oUser);
+	    	$('#pass').val(oPass);
+	    }
+	    $("#rad").click(function(){
+			setCookie("user",$('#user').val(),3)
+			setCookie('pass',$('#pass').val(),3)
+		})
+		$(function(){
+			var duanx=0;
+			var Iduser=0;
+			$('button').click(function(){
+//				$.cookie("Iduser",1,{expires:7});
+				$.ajax({
+					
+				url:'http://lq.hsydk.cn/index/index/checkYzm',
+				data:{
+					tel:$('#phone').val(),
+				},
+				type:'POST',
+				dataType:'json',
+			}).then(function(a){
+				duanx=a;
+				})
+			})
+//			console.log(duanx)
+			
+				
+			
+			$('#btn').click(function(){
+//				console.log(duanx)
+				$.ajax({
+					url:'http://datainfo.duapp.com/shopdata/getuser.php',
+					data:{
+						userID:$('#user').val(),
+					},
+					type:'POST',
+					dataType:'jsonp',
+				}).then(function(a){
+//					console.log(a[0][0])
+					Iduser=a[0][0];
+//					console.log(Iduser)//正常
+					
+					setCookie("Iduser",Iduser,7);
+					$('#username').html(Iduser)
+					$('#username').css({
+						color:"green"
+					});
+				})
+//				console.log(Iduser)//0
+				$.ajax({
+				url:'http://datainfo.duapp.com/shopdata/userinfo.php',
+				data:{
+					status:'login',
+					userID:$("#user").val(),
+					password:$('#pass').val(),
+				},
+				type:'POST',
+				dataType:'json',
+			}).then(function(a){
+//				console.log(a);
+				
+				if($("#user").val()!=""&&$('#pass').val()!=''){
+					
+					if(typeof a=='object'){
+						$('.msg').html('登陆成功请返回首页').css({
+							display:"block"
+						});
+						$('#username').html(Iduser)
+						$('#username').css({
+							color:"green"
+						});
+					}else if(a==0){
+						$('.msg').html('用户名不存在');
+						$('.msg').css({
+							display:"block"
+						})
+					}if(a==2){
+						$('.msg').html('用户名和密码不符');
+						$('.msg').css({
+							display:"block"
+						})
+					}
+				}
+			})
+			
+			if(duanx==$('#dx').val()){
+					$('.msg').html('登陆成功请返回首页').css({
+						display:"block"
+					});
+				}else{
+					$('.msg').html('短信验证码错误').css({
+						display:"block"
+					});
+				}
+				
+			})
+			
+		})
+		
+	</script>
+</html>

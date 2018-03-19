@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.detailcont{padding: 30px 0;border-bottom: 1px solid #ccc;height: 800px;}
+			.detailcont .tocont{width: 990px;margin: 0 auto;border: 1px solid #dddddd;background: #f9f9f9;padding: 10px;overflow: hidden;}
+			.detailcont .tocont>a{float: left;margin-right: 10px;}
+			.detailcont .tocont>a img{width: 100px;height: 100px;border: 1px solid #c8c8c8;}
+			.detailcont .tocont ul{float: right;overflow: hidden;}
+			.detailcont .tocont ul li{float: left;}
+			.detailcont .tocont ul li a:hover{text-decoration: underline;}
+			.detailcont .tocont ul li a{font-size: 13px;color: #333333;padding: 5px 10px;}
+			.detailcont .tocont h4{height: 40px ;line-height: 40px;}
+			.detailcont .tocont>p{background: url(img/xiu.jpg) no-repeat;background-position: 23% 50%;width: 500px;text-indent: 20px;font-size: 14px;}
+			.detailcont .tocont>p span{color: #767fef;}
+			.detailcont .tocont>p a{border: 1px solid #527fef;color: #527fef;padding: 5px 7px;border-radius: 5px;margin:  0 5px;}
+			.detailcont .tocont .soubox{margin: 10px 0;}
+			.detailcont .tocont .soubox input{width: 400px;height: 20px;float: left;outline: none;}
+			.detailcont .tocont .soubox .ipbox>img{border: 1px solid #ccc;float: left;border-left: none;height: 24px;cursor: pointer;}
+			.detailcont .tocont .soubox .ipbox>span{float: left;margin-left: 10px;color: #1a51da;padding: 3px 10px;border: 1px solid #ccc;font-size: 13px;font-weight: bold;border-radius: 5px;cursor: pointer;}
+			.detailcont .tocont .soubox .ipbox>span strong{color: #6b6b6b;}
+			.detailcont .tonav{width: 1010px;margin: 10px auto;border: 1px solid #ccc;height: 40px;line-height: 40px;background: #fff;}
+			.detailcont .tonav li{float: left;border-right: 1px solid #ccc;padding:  0 28px;cursor: pointer;}
+			.detailcont .tonav li:last-child{border-right: none;}
+			.detailcont h4{width: 1010px;margin: 10px auto;font-size: 14px;font-weight: normal;}
+			.detailcont h4 span:first-child{float: left;}
+			.detailcont h4 span:last-child{float: right;font-weight: bold;}
+			.detailcont h4 span:last-child i{background: #e15046;color: #fff;padding: 3px 5px;cursor: pointer;}
+			.detailcont h4 i{font-style: normal;}
+			.bigimg{width: 1010px;margin: 0 auto;position: relative;}
+			#sbox{width: 500px;position: absolute;left: 10px;top: 30px;}
+			#lbox{width: 500px;position: absolute;left: 600px;top: 30px;display: none;height: 400px;overflow: hidden;}
+			#fbox{width: 100px;height: 80px;background: #fff;position: absolute;display: none;z-index: 3;background: url(img/goodsd1.jpg) no-repeat;background-size: 500px 400px;}
+			#sbox img{width: 500px;height: 400px;display: block;}
+			.box{width: 500px;height: 400px;z-index: 4;position: absolute;}
+			#lbox img{position: absolute;}
+			#img-list{position: absolute;top: 450px;left:150px;}
+			#img-list li{list-style: none;float: left;margin-right:30px ;border: 2px solid #ccc;}
+			#img-list li img{width: 100px;height: 80px;}
+			
+			
+			
+			
+			
+			
+		</style>
+	</head>
+	<body>
+		<div class="detailtop"></div>
+		<div class="detailright"></div>
+		<div class="detailcont">
+			<div class="tocont">
+				<a href=""><img src="https://dp.image-qoo10.cn/dp2016/CN/GMKT.IMG/front_image/minishop/2017/11/29/e81ce254-aa33-42d7-81a1-7da814e3caed.s_110-w-fs-st_s.jpg"></a>
+				<ul>
+					<li><a href="">店铺信息</a>|</li>
+					<li><a href="">Q&A·FAQ</a></li>
+				</ul>
+				<h4>北海道之恋</h4>
+				<p>优秀卖家<img src="img/xing.png"><span>86</span>位 粉丝<a href="">+ 收藏本店</a></p>
+				<div class="soubox">
+					<div class="ipbox">
+						<input type="text" id="txt2" placeholder="马上搜索"/><img src="img/sou.png"/><span>所有商品（<strong>3,694</strong>）</span>
+					</div>
+					<!--<ul id="sL"></ul>-->
+				</div>
+			</div>
+			<h4><span><i>化妆品 > </i><i>面部护理 > </i><strong>眼部护理</strong></span><span>商品代码 : 604073771 <i>复制商品地址</i></span></h4>
+			<div class="bigimg">
+			<div id="sbox">
+				<div class="box"></div>
+				<div id="fbox"></div>
+				<img src="img/goodsd1.jpg"/>
+			</div>
+			<div id="lbox">
+				<img src="img/goodsd1.jpg"/>
+			</div>
+			<ul id="img-list">
+				<li><img src="img/goodsd1.jpg"/></li>
+				<li><img src="img/goodsd2.jpg"/></li>
+			</ul>
+				
+			</div>
+			
+		</div>
+		<div class="detailfoot"></div>
+		
+		
+		
+		
+		
+	</body>
+	<script src="libs/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+	<script src="libs/require.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jQuery.banner.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jQuery.banner2.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/tab2.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//红色导航栏
+		require(["js/tab"],function(tab){
+				var abtn = document.getElementById("list99").children;
+				var aimg = document.getElementsByTagName("nav")[0].children;
+				tab.init(abtn,aimg);
+			});
+		$('.detailtop').load('http://localhost/h5-1710/hsyFire/header.html')
+		$('.detailfoot').load('http://localhost/h5-1710/hsyFire/footer.html')
+		$('.detailright').load('http://localhost/h5-1710/hsyFire/rightnav.html')
+		var oSbox=$('#sbox');
+		var oLbox=$('#lbox');
+		var oFbox=$('#fbox');
+		var oSimg = Array.from(oSbox.children("img"));
+		var aImg=oLbox.children[0];
+		var oUl=$('#img-list');
+		var aLi=Array.from(oUl.find('img'));
+		
+//		console.log(aLi)
+		aLi.forEach(v=>{
+			v.onclick=function(){
+				v.style.borderColor='red';
+				oSimg.forEach(k=>{
+//					console.log(k.src);
+					var arr=v.src.split("/")
+					var src='"'+arr[5]+"/"+arr[6]+'"';
+					
+					k.src=src;
+					aImg.src=src;
+					
+					oFbox.style.background='url('+src+')';
+					oFbox.style.backgroundSize='500px 400px'
+					})
+			}
+//			v.onmouseout=function(){
+//				v.style.borderColor='#ccc';
+//			}
+		})
+		
+		addEvent(oSbox,'mouseover',function(){
+			oFbox.style.display='block';
+			oLbox.style.display='block';
+			oSimg.forEach(k=>{k.style.opacity="0.4";})
+//			oSimg[0].style.opacity = "0.4";
+			oSbox.onmousemove=function(eve){
+				var e=eve||window.event;
+				var x=e.offsetX-oFbox.offsetWidth/2;
+				var y=e.offsetY-oFbox.offsetHeight/2;
+				if(x<0){
+					x=0
+				}
+				if(y<0){
+					y=0
+				}
+				if(x>(oSbox.offsetWidth-oFbox.offsetWidth)){
+					x=oSbox.offsetWidth-oFbox.offsetWidth
+				}
+				if(y>(oSbox.offsetHeight-oFbox.offsetHeight)){
+					y=oSbox.offsetHeight-oFbox.offsetHeight
+				}
+				oFbox.style.left=x+'px';
+				oFbox.style.top=y+'px';
+				var numX=x/(oSbox.offsetWidth-oFbox.offsetWidth);
+				var numY=y/(oSbox.offsetHeight-oFbox.offsetHeight);
+//				console.log(numX,numY);
+				aImg.style.left=-numX*(aImg.offsetWidth-oLbox.offsetWidth)+'px';
+				aImg.style.top=-numY*(aImg.offsetHeight-oLbox.offsetHeight)+'px';
+				oFbox.style.backgroundPosition=-x+'px '+-y+'px';
+			}
+		})
+		addEvent(oSbox,'mouseout',function(){
+			oFbox.style.display='none';
+			oLbox.style.display=' none';
+			oSimg.forEach(k=>{k.style.opacity="1";})
+//			oSimg[0].style.opacity = "1";
+		})
+		
+		function addEvent(ele,myEvent,fn){
+			if(ele.addEventListener){
+				ele.addEventListener(myEvent,fn);
+			}else if(ele.attachEvent){
+				ele.attachEvent('on'+myEvent,fn);
+			}else{
+				ele['on'+myEvent]=fn;
+			}
+		}
+		function removeEvent(ele,myEvent,fn){
+			if(ele.addEventListener){
+				ele.removeEventListener(myEvent,fn);
+			}else if(ele.detachEvent){
+				ele.detachEvent('on'+myEvent,fn);
+			}else{
+				ele['on'+myEvent]=null;
+			}
+		}
+		
+	</script>
+</html>

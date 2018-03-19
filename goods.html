@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="css/sass/sass.css"/>
+	</head>
+	<body>
+		<div class="goodstop"></div>
+		<div class="goodsright"></div>
+		<div class="goodscont">
+			<div class="tocont">
+				<a href=""><img src="https://dp.image-qoo10.cn/CN/GMKT.IMG/front_image/minishop/2015/03/31/b4b8ed1e-6da6-40e0-bb8a-807879d43b01.s_110-w-fs-st_s.jpg"></a>
+				<ul>
+					<li><a href="">店铺信息</a>|</li>
+					<li><a href="">Q&A·FAQ</a></li>
+				</ul>
+				<h4>AMII品牌旗舰店</h4>
+				<p>优秀卖家<img src="img/xing.png"><span>8603</span>位 粉丝<a href="">+ 收藏本店</a></p>
+				<div class="soubox">
+					<div class="ipbox">
+						<input type="text" id="txt1" placeholder="马上搜索"/><img src="img/sou.png"/><span>所有商品（<strong>3,694</strong>）</span>
+					</div>
+					<ul id="sL"></ul>
+				</div>
+			</div>
+			<div class="tonav">
+				<ul >
+					
+					<li>ALL</li>
+					<li>新品集</li>
+					<li>外套</li>
+					<li>羽绒</li>
+					<li>T恤/卫衣</li>
+					<li>裤装</li>
+					<li>裙装</li>
+					<li>毛衣</li>
+					<li>鞋包配饰</li>
+					<li>衬衫/雪纺</li>
+				</ul>
+			</div>
+			<div class="goodsbanner">
+				<img src="https://dp.image-qoo10.cn/dp2016/CN/design/m18mkt/event/amii1-10.jpg"/>
+			</div>
+			<div class="goodsList">
+				<h4>ALL<span id="moreBtn">更多</span></h4>
+				<div class="allist"></div>
+				<h4>新品集</h4>
+				<div class="newlist"></div>
+				<h4>外套</h4>
+				<div class="wtlist"></div>
+				<h4>羽绒</h4>
+				<div class="yrlist"></div>
+				<h4>T恤/卫衣</h4>
+				<div class="txlist"></div>
+				<h4>裤装</h4>
+				<div class="kzlist"></div>
+				<h4>裙装</h4>
+				<div class="qzlist"></div>
+				<h4>毛衣</h4>
+				<div class="mylist"></div>
+				<h4>鞋包配饰</h4>
+				<div class="xblist"></div>
+				<h4>衬衫/雪纺</h4>
+				<div class="cslist"></div>
+			</div>
+		</div>
+		<div class="goodsfoot"></div>
+	</body>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+	<script src="libs/require.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jQuery.banner.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jQuery.banner2.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/tab2.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/flyimg.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/cookie.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/goods.js" type="text/javascript" charset="utf-8"></script>
+	<!--<script src="libs/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>-->
+	<script type="text/javascript">
+		require(["js/tab"],function(tab){
+			var abtn = document.getElementById("list99").children;
+			var aimg = document.getElementsByTagName("nav")[0].children;
+			tab.init(abtn,aimg);
+		});
+		var offH=document.body.offsetHeight||document.documentElement.offsetHeight;
+		var moreBtn=document.getElementById("moreBtn");
+		$(function(){
+			
+			$('.tonav').find('li').click(function(){
+//				console.log($('.goodsList').children('div').eq($(this).index()).offset().top);
+				$('html').animate({
+					scrollTop:$('.goodsList').children('div').eq($(this).index()).offset().top-40
+				},1000)
+			})
+			$('.goodstop').load('http://localhost/h5-1710/hsyFire/header.html',function(res){
+				if($('#username').html()!=''){
+				$('#username').attr({"title":"点我退出登录"});
+				$('#username').click(function(e){
+					e.preventDefault();
+					$('#username').html('');
+					removeCookie("Iduser",1,-1)
+				})
+			}
+			})
+			$('.goodsfoot').load('http://localhost/h5-1710/hsyFire/footer.html')
+			$('.goodsright').load('http://localhost/h5-1710/hsyFire/rightnav.html',function(){
+				
+			})
+//			arrNew.push(Json)
+//			Json=Json.contact(Json1);
+//			var newArr=JSON.stringify(arrNew[0]);
+//			setCookie("goods",newArr,1)
+			
+			
+//			Json.push(Json1);
+//			Json.push(Json2);
+//			Json.push(Json3);
+			
+
+			getGoods("http://localhost/h5-1710/hsyFire/json/allgoods.json",".allist")
+			getGoods("http://localhost/h5-1710/hsyFire/json/newgoods.json",".newlist")
+			getGoods("http://localhost/h5-1710/hsyFire/json/wtgoods.json",".wtlist")
+			getGoods("http://localhost/h5-1710/hsyFire/json/yrgoods.json",".yrlist")
+			getGoods("http://localhost/h5-1710/hsyFire/json/txgoods.json",".txlist")
+			getGoods("http://localhost/h5-1710/hsyFire/json/kzgoods.json",".kzlist")
+			getGoods("http://localhost/h5-1710/hsyFire/json/qzgoods.json",".qzlist")
+			getGoods("http://localhost/h5-1710/hsyFire/json/mygoods.json",".mylist")
+			getGoods("http://localhost/h5-1710/hsyFire/json/xbgoods.json",".xblist")
+			getGoods("http://localhost/h5-1710/hsyFire/json/csgoods.json",".cslist")
+		})
+	</script>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="dahuiji.css"/>
+	<body>
+		<div id="scorebox">
+			
+		</div>
+		<div id="body_main" class="main">
+			<ul id="options" class="options">
+				<li value="1">超级困难</li>
+				<li value="2">非常困难</li>
+				<li value="3">比较困难</li>
+				<li value="4">VIP</li>
+			</ul>
+		</div>
+	</body>
+	<script src="common.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		window.onload=function(){
+			var score=0;
+			var oScore=$('scorebox');
+			function Engine(){
+				this.main=$('body_main');
+				this.btn=$('options').children;
+				this.init();
+//				console.log(this.btn);
+			}
+			//引擎部分
+			Engine.prototype={
+				constructor:Engine,
+				init:function(){
+					var that=this;
+					for(let i=0;i<this.btn.length;i++){
+						this.btn[i].onclick=function(){
+							
+							that.value=i;
+							that.loading();
+							console.log(that.value);
+						}
+					}
+				},
+				loading:function(){
+					this.btn[0].parentNode.remove();
+					this.logo=creatDiv('logo');
+					this.loading=creatDiv('loading');
+					var loadingIndex=0;
+					//背景图的动画
+					var mainSpeed=0;
+					setInterval(()=>{
+						mainSpeed+=2;
+						this.main.style.backgroundPositionY=mainSpeed+'px';
+					},30)
+					//小飞机运动
+					setInterval(()=>{
+						loadingIndex++;
+						this.loading.style.backgroundImage="url(images/loading"+(loadingIndex%3+1)+".png)"
+					},400)
+					//移除
+					setTimeout(()=>{
+						this.loading.remove();
+						this.logo.remove();
+						this.gameStart();
+					},1000)
+				},
+				gameStart:function(){
+					plane.init(this.main);
+					plane.fire(this.value);
+					//敌机类型随机初始化
+					setInterval(()=>{
+						Math.random()>0.5?new Enemy(this.main).init(1):'';
+					},1000)
+					setInterval(()=>{
+						Math.random()>0.7?new Enemy(this.main).init(2):'';
+					},3000)
+					setInterval(()=>{
+						Math.random()>0.9?new Enemy(this.main).init(3):'';
+					},3000)
+				}
+				
+			}
+			new Engine();
+			//我的飞机部分
+			var plane={
+				init:function(main){
+					this.main=main;
+					this.ele=creatDiv('my-warplain');
+					this.ele.style.bottom=0;
+					this.ele.style.left=(this.main.offsetWidth-this.ele.offsetWidth)/2+'px';
+//					var that=this;
+					document.onmousemove=(eve)=>{
+						var e=eve||window.event;
+						this.move(e);
+					}
+				},
+				move:function(e){
+					let l=e.clientX-this.ele.offsetWidth/2-this.main.offsetLeft;
+					let t=e.clientY-this.ele.offsetHeight/2;
+					var max=this.main.offsetWidth-this.ele.offsetWidth;
+					l=l<0?0:l;
+					t=t<0?0:t;
+					l=l>max?max:l;
+					this.ele.style.left=l+'px';
+					this.ele.style.top=t+'px';
+					
+				},
+				fire:function(value){
+//					clearInterval(this.ele.time)
+					switch(value){
+						case 0:this.frequency=500;break;
+						case 1:this.frequency=400;break;
+						case 2:this.frequency=300;break;
+						case 3:this.frequency=100;break;
+					}
+					//观察者模式
+					this.ele.time=setInterval(()=>{
+						this.aBullet.push(new Bullet());
+					},this.frequency)
+				},
+				aBullet:[],
+				die:function(){
+					var dieIndex=0;
+					clearInterval(this.ele.time);
+					clearInterval(this.ele.timer);
+					this.ele.timer=setInterval(()=>{
+						dieIndex++;
+						this.ele.style.backgroundImage="url(images/me_die" + dieIndex +".png)";
+						if(dieIndex>4){
+							clearInterval(this.ele.timer);
+							this.ele.remove();
+						}
+					},300)
+				}
+			}
+			
+			//子弹
+			function Bullet(){
+				this.init();
+			}
+			
+			Bullet.prototype={
+				constructor:Bullet,
+				init:function(){
+					this.ele=creatDiv('bullet');
+					this.ele.style.left=(plane.ele.offsetLeft+plane.ele.offsetWidth/2-this.ele.offsetWidth/2)+'px';
+					this.ele.style.top=(plane.ele.offsetTop-this.ele.offsetHeight)+'px';
+					this.move();
+				},
+				move:function(){ 
+					this.ele.timer=setInterval(()=>{
+						this.ele.style.top=(this.ele.offsetTop-10)+'px';
+						if(this.ele.offsetTop<=0){
+							this.boom();
+						}
+					},30)
+				},
+				boom:function(){
+					clearInterval(this.ele.timer);
+					this.ele.className='bullet_die';
+					var boomIndex=0;
+					setTimeout(()=>{
+						this.ele.remove();
+					},200)
+					//子弹爆炸的动画
+					
+					this.ele.time=setInterval(()=>{
+						boomIndex++;
+						this.ele.style.backgroundImage="url(images/die"+(boomIndex%2+1)+".png)";
+					},100)
+					//清除aBullet里面爆炸过的子弹
+					for(let i=0;i<plane.aBullet.length;i++){
+//						console.log(plane.aBullet[i].ele);
+						if(plane.aBullet[i]==this){
+							plane.aBullet.splice(i,1);
+						}
+					}
+				}
+			}
+			//敌军
+			class Enemy{
+				constructor(main){
+					this.main=main;
+				};
+				init(type){
+					//判断敌机类型
+					this.type=type;
+					switch(type){
+						case 1:this.ele=creatDiv('enemy-small');this.speed=5;this.hd=2;break;
+						case 2:this.ele=creatDiv('enemy-middle');this.speed=3;this.hd=5;break;
+						case 3:this.ele=creatDiv('enemy-large');this.speed=1;this.hd=10;break;
+					}
+					//敌机位置随机
+					var max=this.main.offsetWidth-this.ele.offsetWidth;
+					this.ele.style.left=Math.round(Math.random()*max)+'px';
+					this.ele.style.top=-this.ele.offsetHeight+'px';
+					this.move();
+				}
+				move(){
+					//敌机运动
+					this.ele.timer=setInterval(()=>{
+						this.ele.style.top=this.ele.offsetTop+this.speed+'px';
+						if(this.ele.offsetTop>=this.main.offsetHeight){
+							this.die();
+						}
+						//运动的同时碰撞
+						for(let i=0;i<plane.aBullet.length;i++){
+//							console.log(plane.aBullet[i].ele)
+							if((plane.aBullet[i].ele.offsetLeft+plane.aBullet[i].ele.offsetWidth)>this.ele.offsetLeft){
+								if((plane.aBullet[i].ele.offsetLeft+plane.aBullet[i].ele.offsetWidth)<(this.ele.offsetLeft+this.ele.offsetWidth)){
+									if(plane.aBullet[i].ele.offsetTop<(this.ele.offsetTop+this.ele.offsetHeight)){
+										plane.aBullet[i].boom();
+										this.hd--;
+										if(this.hd==0){
+											this.die();
+											//计分
+											switch(this.type){
+												case 1:score+=10;break;
+												case 2:score+=30;break;
+												case 3:score+=50;break;
+											}
+											oScore.innerHTML=`得分：${score}`;
+										}
+									}
+								}
+							
+							}
+						}
+						//敌机和我机碰撞
+						if((plane.ele.offsetLeft+plane.ele.offsetWidth)>this.ele.offsetLeft){
+							if((plane.ele.offsetLeft)<(this.ele.offsetLeft+this.ele.offsetWidth)){
+								if(plane.ele.offsetTop<(this.ele.offsetTop+this.ele.offsetHeight)){
+									if((plane.ele.offsetTop+plane.ele.offsetHeight)>this.ele.offsetTop){
+										for(let i=0;i<plane.aBullet.length;i++){
+											plane.aBullet[i].boom();
+										}
+										this.die();
+										plane.die();
+										setInterval(function(){
+											let div=creatDiv('restart');
+											div.innerHTML='重新开始';
+											div.onclick=function(){
+												window.history.go(0);
+											}
+										},2000)
+//										
+										
+									}
+								}
+							}
+							
+						}
+					
+					},30)
+				}
+				die(){
+					clearInterval(this.ele.timer)
+					switch(this.type){
+						case 1:this.src='plain1_die';this.num=3;break;
+						case 2:this.src='plain2_die';this.num=4;break;
+						case 3:this.src='plain3_die';this.num=6;break;
+					}
+					let srcIndex=0;
+					this.ele.time=setInterval(()=>{
+						srcIndex++;
+						this.ele.style.backgroundImage="url(images/"+ this.src + srcIndex +".png)";
+						if(srcIndex>this.num){
+							clearInterval(this.ele.time)
+							this.ele.remove();
+						}
+					},300)
+				}
+			}
+			//在body_main里面创建新对象
+			function creatDiv(css){
+				let div=document.createElement('div');
+				div.className=css;
+				$('body_main').appendChild(div);
+				//返回对应的div
+				return div;
+			}
+			new Engine();
+		}
+	</script>
+</html>

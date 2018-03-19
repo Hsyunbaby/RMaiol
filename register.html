@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css"/>
+	</head>
+	<style type="text/css">
+		.registerbox{padding: 10px; width:990px;height: 450px;margin: 20px auto;overflow: hidden; border-bottom:1px solid #ccc;}
+		.registerbox h3{height: 80px;line-height: 80px;background: url(img/backg.png) no-repeat;background-position: 100% 0;border-bottom: 2px solid #527fef;color: #2c2d2d;font-size: 26px;}
+		.registerbox h3 span{font-size: 14px;color: #4f8ac2;padding:0 20px;}
+		.registerbox .inp{padding: 20px 0;}
+		.registerbox .inp h5{height: 40px ;line-height: 40px;font-size: 16px;}
+		.registerbox .inp h5 span{float: right;color: #ff564b;}
+		.registerbox .inp h5 span b{padding: 5px 10px;background: #FF5640;margin-left: 10px;color: #fff;border-radius: 5px;cursor: pointer;}
+		.registerbox .inp .registerbody{border: 1px solid #d6e2f4;overflow: hidden;margin: 10px;}
+		.registerbox .inp .registerbody p span{padding:0 30px;float: left;width: 150px;height: 40px;background: #f5f5f5;border-right:1px solid #d6e2f4 ;line-height:40px;color: #0071bb;font-weight: bold; }
+		.registerbox .inp .registerbody p{height: 40px; line-height:40px; border-bottom:1px solid #d6e2f4 ;}
+		.registerbox .inp .registerbody p input{margin:8px 20px;width: 300px;height: 20px;}
+		.registerbox .inp .registerbody p i{width: 50px; height: 34px; background: #ccc;line-height: 34px;text-align: center;font-style: normal;border-radius: 3px;float: left;margin:3px 20px;cursor: pointer;}
+		.registerbox .inp .registerbody a{height: 40px;width: 100px;background: #ff564b;display: block;line-height: 40px;margin: 10px 150px;text-align: center;border-radius: 5px;cursor: pointer;text-decoration: none;color: #bdbee8;float: left;}
+		.registerbox .msg1{text-align: center; color: #fff;background: #0071bb;opacity: 0.5;font-weight: bold;display: block;height: 40px;line-height: 40px;width: 800px;margin: 0 auto; margin-top: 10px; border-radius: 10px;display: none;}
+
+		
+	</style>
+	<body>
+		<div class="registertop"></div>
+		<div class="registerbox">
+			<h3>会员注册<span>欢迎来到rm8！</span></h3>
+			<div class="inp">
+				<h5>请输入会员信息 :<span>*您想以卖家身份登录吗<b>卖家登录</b></span></h5>
+				<div class="registerbody">
+					<p><span>用户名：</span><input type="text" name="user" id="user1" value="" /></p>
+					<p><span>密码：</span><input type="password" name="user" id="pass1" value="" /></p>
+					<p><span>确认密码：</span><input type="password" name="user" id="spass" value="" /></p>
+					<p><span>验证码：</span><input type="text" name="user" id="tel" value="" /><i id="yanz">1111</i></p>
+					<div class="msg1"></div>
+					<a id="btn1">注册</a><a href="index.html">返回首页</a>
+					
+				</div>
+			</div>
+		</div>
+		<div class="registerright"></div>
+		<div class="registerfoot"></div>
+	</body>
+	<script src="libs/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+	<script src="libs/require.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jQuery.banner.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jQuery.banner2.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/tab2.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		require(["js/tab"],function(tab){
+			var abtn = document.getElementById("list99").children;
+			var aimg = document.getElementsByTagName("nav")[0].children;
+			tab.init(abtn,aimg);
+		});
+		$('.registertop').load('http://localhost/h5-1710/hsyFire/header.html')
+		$('.registerfoot').load('http://localhost/h5-1710/hsyFire/footer.html')
+		$('.registerright').load('http://localhost/h5-1710/hsyFire/rightnav.html')
+		$(function(){
+			
+			var num=Math.round(Math.random()*8999+1000);
+			$("#yanz").html(num);
+			$("#yanz").click(function(){
+				var num=Math.round(Math.random()*8999+1000);
+				$("#yanz").html(num);
+				
+			})
+		})
+		$('#btn1').click(function(){
+			$.ajax({
+				type:"post",
+				url:"http://datainfo.duapp.com/shopdata/userinfo.php",
+				//https://api.smsbao.com/sms?u=USERNAME&p=PASSWORD&m=PHONE&c=CONTENT
+				data:{
+					status:"register",
+					userID:$('#user1').val(),
+					password:$('#pass1').val(),
+				},
+				dataType:'json',
+			}).then(function(res){
+//				
+				if(res==1&&($('#pass1').val()==$('#spass').val())&&($('#tel').val()==$('#yanz').html())){
+					$('.msg1').html('注册成功').css({
+						color:"",
+						display:"block"
+					});
+				}else if(($('#tel').val()!=$('#yanz').html())){
+					$('.msg1').html('验证码不一致').css({
+						color:"red",
+						display:"block"
+					});
+				}else if(($('#pass1').val()!=$('#spass').val())){
+					$('.msg1').html('密码不一致！').css({
+						color:"red",
+						display:"block"
+					});
+				}else if(res==0){
+					$('.msg1').html('用户名重名').css({
+						color:"red",
+						display:"block"
+					});
+				}else if(res==2){
+					$('.msg1').html('数据库报错');
+				}
+			})
+			
+		})
+	</script>
+</html>
